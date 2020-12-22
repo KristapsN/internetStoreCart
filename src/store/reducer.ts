@@ -1,22 +1,18 @@
-import { RootState, AllActions, ADD_TOCART } from './type';
+import { AllActions, ADD_TOCART } from './type';
+import { Products, OneProduct } from '../productData/product';
 
-const initialStore: RootState = {
-  id: 0,
-};
-
-export const reducer = (state = initialStore, action: AllActions) => {
+export const reducer = (state: OneProduct[] = Products, action: AllActions) => {
   switch (action.type) {
     case ADD_TOCART: {
-      console.log('1', action.id); 
-      console.log('2', state); 
-      
-      return {
-        
-        id: action.id,
-      };
+      const newProducts = [...Products];
+      const indexID = newProducts.findIndex((item)=> item.id === action.id);
+      newProducts[indexID].inCart = !newProducts[indexID].inCart;
+  
+      return newProducts;
+          
     }
     default:
-      console.log('3');
+
       return state;
   }
 };

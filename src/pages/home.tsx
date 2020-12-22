@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store/type';
 import { ProductGeneral } from '../components/product/productGeneral';
 import { addToCart } from '../store/actions';
-import { Products } from '../productData/product';
+import { OneProduct  } from '../productData/product';
 
 const Home: FC = () => {
-  // const cart = useSelector((state: RootState) => state.id);
+  const store = useSelector((state: OneProduct[]) => state);
   const dispatch = useDispatch();
 
   return (
@@ -14,7 +13,7 @@ const Home: FC = () => {
       <div className="container">
         <div className="row">
           <div className="col-xs-3">
-            {Products.map((item) =>
+            {store.map((item) =>
               <div key={item.id}>
                 <ProductGeneral
                   id={item.id}

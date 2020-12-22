@@ -1,26 +1,9 @@
 export const ADD_TOCART = 'ADD_TOCART';
 
-export type AllProduct = number;
-
-interface InitialStore {
-  id: AllProduct;
-}
-
-export type AddToCart = {
+export type AllActions = {
   type: typeof ADD_TOCART;
-  id: AllProduct;
-
+  id: number;
 };
 
-export type AllActions = AddToCart;
 
-export interface RootState extends InitialStore { }
 
-// interface OneProduct {
-//   id: number
-//   name: string
-//   brand: string
-//   price: number
-//   inCart: boolean
-
-// }
